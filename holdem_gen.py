@@ -103,7 +103,15 @@ def hand_mapping(*args):
 
     return sorted(result_list.item(), key = lambda t: t[0])
 
-
+def main_process(board, player_hand):
+    result_list = list()
+    all_hands = gen_player_hands(board, player_hand)
+    for hand in all_hands:
+        x = gen_cards_from_hand(hand)
+        hand_result = evalhands(hand)
+        result_list.append(hand_result)
+    final_result = gen_result_list(results)
+    return final_result
 
 
 a = Card.Card('Td')
