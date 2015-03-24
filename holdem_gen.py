@@ -16,17 +16,19 @@ def gen_deck_without_cards(out_cards):
         deck.remove(out_card)
     return tuple(deck)
 
-def gen_player_cards(deck):
+def gen_opponent_cards(deck):
     return itertools.combinations(deck, 2)
 
+# generate boards cards
 def gen_board_cards(deck, board_len):
     return itertools.combinations(deck, 5 - board_len)
 
+# can take 5,6,7 cards (boards + player cards), create hands
 def gen_player_hands(board, player_cards):
     all_cards =list(board + player_cards)
     return itertools.combinations(all_cards, 5)
 
-def gen_hand_cards(hand):
+def gen_cards_from_hand(hand):
     cards = list(hand)
     cards_list = list()
     for card in cards:
@@ -121,7 +123,7 @@ z = gen_deck_without_cards(out_cards)
 results = list()
 han = gen_player_hands(out_cards, p_hand)
 for hand in han:
-    x = gen_hand_cards(hand)
+    x = gen_cards_from_hand(hand)
     xy = evalhands(hand)
     results.append(xy)
 maoz = gen_result_list(results)
