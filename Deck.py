@@ -2,6 +2,7 @@ import random
 from Card import *
 from Hand import *
 from EvalHands import evalhands
+import holdem_gen
 
 
 class Deck():
@@ -47,7 +48,10 @@ b = Card('Ac')
 c = Card('Ad')
 d = Card('As')
 e = Card('Th')
-x =  evalhands(a,b,c,d,e)
+y = evalhands(a,b,c,d,e)
+y.hand_result()
+
+
 # y.cardvalue = '10'
 # y.shap = 'd'
 #

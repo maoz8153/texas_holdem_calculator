@@ -1,15 +1,19 @@
 import collections
 import copy
 import operator
+import Card
 
 class Hand():
     hand_renking = [ 'high_card', 'pair', 'two_pairs', 'three _of_a_kind', 'straight',
                      'flush', 'full_house', 'four_of_a_kind', 'straight_flush']
-    def __init__(self, *args):
+    def __init__(self, hand_cards):
+        # cards_list = list()
+        # for card in args:
+        #     cards_list.append(Card(card))
         self.value_list = []
         self.shap_list = []
         self.cards_list = dict()
-        for card in args:
+        for card in hand_cards:
             val = self.get_card_value(card.cardvalue)
             valshap = self.shap_and_val(val,card.shap)
             self.value_list.append(val)

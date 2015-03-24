@@ -1,18 +1,24 @@
 from collections import Counter
-import Card
+import Hand
+import operator
 class evalhands():
 
-    def __init__(self, *args):
+    hand_renking =  {'high_card': 1, 'pair': 2, 'two_pairs': 3, 'three _of_a_kind': 4, 'straight': 5,
+                     'flush': 6, 'full_house': 7, 'four_of_a_kind': 8, 'straight_flush': 9}
+
+    def __init__(self, hand):
+        self.result = dict()
         self.value_list = []
         self.shap_list = []
         self.cards_list = {}
-        for card in args:
+        for card in hand:
             self.value_list.append(card.value)
             self.shap_list.append(card.suit)
             self.cards_list[str(card.value) + card.suit] = {card.value: card.suit}
 
         self.sort_card()
-        self.result()
+
+
 
     def sort_card(self):
         self.shap_list = [y for (x,y) in sorted(zip(self.value_list, self.shap_list))]
@@ -31,50 +37,57 @@ class evalhands():
         shapval = str(self.get_card_value(value)) + shap
         return shapval
 
+    # return array of value hand, hand string, kickers
     def check_pair_or_more(self):
         values = dict()
-        cards = self.cards_list.copy()
-        for i in range(0, 4, 1):
-            for ii in range(i + 1, 5, 1):
-                if i != ii:
-                    if self.value_list[i] == self.value_list[ii]:
-                        if self.value_list[i] in values:
-                            val_shap = self.cards_list[str(self.value_list[i]) + self.shap_list[i]]
-                            if val_shap in self.cards_list.keys():
-                                cards.pop(val_shap)
-                                values[self.value_list[i]] += 1
-                        else:
-                            values[self.value_list[i]] = 2
-                            val_shap = str(self.value_list[i]) + self.shap_list[i]
-                            cards.pop(val_shap)
-                            # val_shap2 = self.shap_and_val(self.value_list[ii], self.shap_list[ii])
-                            #self.cards_list.pop(val_shap2)
+        for i in range(5):
+                if self.value_list[i] in values:
+                    values[self.value_list[i]] += 1
+                else:
+                    values[self.value_list[i]] = 1
 
-        if len(values):
-            if len(self.cards_list) > 0:
-                # left_hand = dict(zip(left_values, left_shaps))
-                return values
+        values = sorted(values.items(), key=lambda x: (x[1],x[0]), reverse=True)
+        if len(values) == 2:
+            if values[0][1] == 4:
+                res = 'four of a kind {0}'.format(values[0][0])
+                return [8, res, values[0][0], values[1][0]]
             else:
-                return values
-        else:
-            return False
+                res = 'full house{0} over {1}'.format(values[0][0],values[1][0])
+                return [7 , res, values[0][0],values[1][0]]
+        elif len(values) == 3:
+            if values[0][1] == 3:
+                res = 'three of a kind{0}'.format(values[0][0])
+                return [4 ,res,values[0][0],values[1][0],values[2][0]]
+            if values[0][1] == 2 and  values[1][1] == 2:
+                res = ['two pairs {0} and {1}'.format(values[0][0],values[1][0]), [values[0][0],values[1][0]]]
+                return [3 , res,values[0][0],values[1][0],values[2][0]]
+        elif len(values) == 4 :
+            res = 'pairs {0} '.format(values[0][0])
+            return [2, res,values[0][0],values[1][0],values[2][0],values[3][0]]
+        elif len(values) > 4:
+            res = 'high card {0} '.format(self.value_list[-1])
+            return [1,res, self.value_list]
+
 
 
     def check_straight(self):
-        if str(14) in str(self.value_list):
-            if str(2) in str(self.value_list):
-                self.value_list[-1].pop()
-                self.value_list.append('1')
-                self.sort_card()
+        values = list(self.value_list)
+        if str(14) in str(values):
+            if str(2) in str(values):
+                for val in self.value_list:
+                    if val == 14:
+                        values.remove(val)
+                        values.append(1)
+                values.sort()
         straigh = True
         for i in range(3):
-            if int(self.value_list[i] + 1) == self.value_list[i + 1]:
+            if int(values[i] + 1) == values[i + 1]:
                 continue
             else:
                 straigh = False
                 break
         if straigh:
-            return {straigh: self.value_list[-1]}
+            return [5,'straigh',self.value_list[-1]]
         else:
             return False
 
@@ -88,33 +101,54 @@ class evalhands():
                 flush = False
                 break
         if flush:
-            return {flush: self.value_list[-1]}
+            return [6 , 'flush' ,self.value_list[-1]]
         else:
             return False
 
 
-    @property
-    def result(self):
+    # return reuslt with agrument as 1.result 2.kicker 3.suit
+    def hand_result(self):
         straight = self.check_straight()
         flush = self.check_flush()
         if straight:
             if flush:
-                return {'straight flush': flush[True]}
+                #self.result = [flush, self.value_list[-1]]
+                return [flush, self.value_list[-1]]
             else:
-                return {'straight': straight[True]}
+                #self.result = [straight, self.value_list[-1]]
+                return  [straight, self.value_list[-1]]
         if flush:
-            return {'flush': flush[True]}
+            #self.result = [flush, self.value_list[-1]]
+            return [flush, self.value_list[-1]]
         pair_or_more = self.check_pair_or_more()
-        if pair_or_more:
-            if len(pair_or_more) > 1:
-                s_dict = dict(sorted(pair_or_more.iteritems(), key=operator.itemgetter(1), reverse=True)[:2])
-                if max(s_dict.values()) == 3:
-                    return 'full house {0} over {1}'.format(s_dict.keys()[0], s_dict.keys()[1])
-                else:
-                    return 'two pairs {0} and {1}'.format(max(s_dict.keys()), min(s_dict.keys()))
+        #self.result = pair_or_more
+        return pair_or_more
 
-            else:
-                return 'pair of {0}'.format(pair_or_more.keys())
+    def quad_kicker(self, val):
+        kicker = list()
+        if val == self.value_list[0]:
+            kicker = self.value_list[-1]
+        else:
+            kicker = self.value_list[0]
+        return kicker
+
+    def triple_kicker(self, val):
+        kicker = list()
+        for value in self.value_list:
+            if val != value:
+                kicker.append(value)
+        kicker.sort()
+        return kicker
+
+    def pair_kicker(self, val):
+        kicker = list()
+        for value in self.value_list:
+            if val != value:
+                kicker.append(value)
+        kicker.sort()
+        return kicker
+
+
 
 
 
