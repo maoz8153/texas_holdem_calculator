@@ -1,10 +1,10 @@
 import holdem_gen
+import itertools
 
-
-def deck_information(deck_cards):
+def deck_information(deck):
     num_suit_cards = [0]*4
     num_value_cards = [0]*13
-    for card in deck_cards:
+    for card in deck:
         num_value_cards[14 - card.value] += 1
         num_suit_cards[card.suit_index] += 1
     return num_suit_cards, num_value_cards
@@ -12,13 +12,41 @@ def deck_information(deck_cards):
 def value_probabilty(deck):
      return [(14 - index, frequency) for index, frequency in enumerate(deck) if frequency]
 
+# take any board given(3,4) plus hand and check if flush available and return the cards by frequency
+def flush_available(board, hand):
+    suits = dict()
+    cards_in_play = list()
+    cards_in_play.extend(board)
+    cards_in_play.extend(hand)
+    for card in cards_in_play:
+        if card.suit in suits:
+            suits[card.suit] += 1
+        else:
+            suits[card.suit] == 1
+
+    suits = sorted(suits.items(), key=lambda x: x[1], reverse=True)
+    if len(cards_in_play) == 5 and suits[0][1] > 2:
+        return [suits[0][0], suits[0][1]]
+    elif len(cards_in_play) == 6 and suits[0][1] > 3:
+        return [suits[0][0], suits[0][1]]
+    else:
+        return None
+
 def flot_probabilty(board, hand):
     current_hand = holdem_gen.main_process(board, hand)
     out_cards = list()
     out_cards.extend(board)
     out_cards.extend(hand)
     deck = holdem_gen.gen_deck_without_cards(out_cards)
-    
+
+def flush_probabilty(board, hand):
+    is_flush = flush_available(board,hand)
+    if is_flush is not None:
+        deck = holdem_gen.gen_deck_without_cards(board,hand)
+
+
+
+
 
 
 
