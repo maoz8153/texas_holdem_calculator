@@ -3,7 +3,10 @@ from EvalHands import *
 from Hand import *
 
 # take out_cards as list and remove them from deck
-def gen_deck_without_cards(out_cards):
+def gen_deck_without_cards(board, hand):
+    out_cards = list()
+    out_cards.extend(board)
+    out_cards.extend(hand)
     deck = []
     shaps = ['h', 'd', 'c', 's']
     val_string = "AKQJT98765432"
