@@ -1,6 +1,12 @@
 import holdem_gen
 import itertools
 
+def cards_in_play(board, hand):
+    card_in_play = list()
+    card_in_play.extend(board)
+    card_in_play.extend(hand)
+    return cards_in_play
+
 def deck_information(deck):
     num_suit_cards = [0]*4
     num_value_cards = [0]*13
@@ -9,8 +15,16 @@ def deck_information(deck):
         num_suit_cards[card.suit_index] += 1
     return (num_suit_cards, num_value_cards)
 
+def cards_valus_list(cards):
+    values = list()
+    for card in cards:
+        values.append(card.value)
+    values.sort()
+    return values
+
 def value_probabilty(deck):
      return [(14 - index, frequency) for index, frequency in enumerate(deck) if frequency]
+
 
 # take any board given(3,4) plus hand and check if flush available and return the cards by frequency
 def flush_available(board, hand):
@@ -40,7 +54,6 @@ def flot_probabilty(board, hand):
     deck = holdem_gen.gen_deck_without_cards(out_cards)
 
 def flush_probabilty(board, hand):
-    suit_index_dict = {"s": 0, "c": 1, "h": 2, "d": 3}
     is_flush = flush_available(board,hand)
     if is_flush is not None:
         deck = holdem_gen.gen_deck_without_cards(board,hand)
@@ -48,11 +61,42 @@ def flush_probabilty(board, hand):
         number_of_cards = 5 - is_flush[0][0]
         if number_of_cards == 2 :
             prob = suit_cards[is_flush[0][0]]*(suit_cards[is_flush[0][0]] - 1)/float(len(deck)* (len(deck) - 1))
-        if number_of_cards == 1
+        if number_of_cards == 1:
             prob = suit_cards[is_flush[0][0]]/float(len(deck))
         return prob
     else:
         return 0
+
+def ace_in_cards_list(cards_list):
+    new_cards_list = []
+    if 14 in cards_list:
+        new_cards_list[0].append(cards_list)
+        cards_list.pop[-1]
+        cards_list.extend(1)
+        cards_list.sort()
+        new_cards_list[1].append(cards_list)
+        return new_cards_list
+    else:
+        return cards_list
+
+def straight_available(board, deck):
+    cards = cards_in_play(board, deck)
+    cards_list_before = cards_valus_list(cards)
+    cards_list_after = ace_in_cards_list(cards_list_before)
+    for ii in xrange(len(cards_list_after)):
+        cards_list = cards_list_after[ii]
+        if len(cards_list) == 5:
+            for i in xrange(0,3):
+                delta = cards_list[i+2] - cards_list[i]
+                if delta == 2 and cards_list[i+1] == cards_list[i] + 1:
+                    if cards_list[0] != 1:
+                        cards_needed = cards_list[i+2] + 1, cards_list[i+2] + 2, cards_list[i] - 1, cards_list[i] - 2
+                    else:
+                        cards_needed = cards_list[i+2] + 1, cards_list[i+2] + 2
+
+                if 2 < delta <= 4 :
+                    if cards_list[i+1] in (cards_list[i]+1,cards_list[i]+2):
+                        
 
 
 
