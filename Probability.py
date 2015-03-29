@@ -91,7 +91,7 @@ def straight_available(board, deck):
                 delta = cards_list[i+2] - cards_list[i]
                 if delta == 2 and cards_list[i+1] == cards_list[i] + 1:
                     if cards_list[0] != 1:
-                        cards_needed = list(cards_list[i+2] + 1, cards_list[i+2] + 2, cards_list[i] - 1, cards_list[i] - 2)
+                        cards_needed = list([cards_list[i+2] + 1, cards_list[i+2] + 2], [cards_list[i] - 1, cards_list[i] - 2])
                     else:
                         cards_needed = list(cards_list[i+2] + 1, cards_list[i+2] + 2)
 
@@ -99,6 +99,8 @@ def straight_available(board, deck):
                     if cards_list[i+1] in (cards_list[i]+1,cards_list[i]+2):
                         xcards = set(cards_list[i]+1,cards_list[i]+2) - set(cards_list[i+1])
                         cards_needed = list(xcards, cards_list[i+2] + 1)
+                if i < 2 and len(cards_needed) > 1:
+                    
 
         elif len(cards_list) == 6:
             for i in xrange(0,3):
@@ -113,7 +115,7 @@ def straight_available(board, deck):
                 if delta == 4:
                     xcards = set(list(range(cards_list[i],cards_list[i+3]))) - set(cards_list[i:i+3])
                     if len(xcards) == 1:
-                        cards_needed = xcards
+                        cards_needed = list(xcards)
 
 
 
