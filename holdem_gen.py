@@ -1,11 +1,14 @@
 import itertools
 from EvalHands import *
 from Hand import *
+import time
+import random
 
 # take out_cards as list and remove them from deck
-def gen_deck_without_cards(board, hand):
+def gen_deck_without_cards(hand, board=0):
     out_cards = list()
-    out_cards.extend(board)
+    if board != 0:
+        out_cards.extend(board)
     out_cards.extend(hand)
     deck = []
     shaps = ['h', 'd', 'c', 's']
@@ -23,12 +26,15 @@ def gen_opponent_cards(deck):
     return itertools.combinations(deck, 2)
 
 # generate boards cards
-def gen_board_cards(deck, board_len):
-    return itertools.combinations(deck, 5 - board_len)
+def gen_board_cards(deck, board_len=0):
+    random.seed(time.time())
+    return random.sample(deck, 5 - board_len)
 
 # can take 5,6,7 cards (boards + player cards), create hands
 def gen_player_hands(board, player_cards):
-    all_cards =list(board + player_cards)
+    #all_cards =list()
+    all_cards = board + player_cards
+    #all_cards = tuple(all_cards)
     return itertools.combinations(all_cards, 5)
 
 def gen_cards_from_hand(hand):
@@ -107,36 +113,38 @@ def hand_mapping(*args):
     return sorted(result_list.item(), key = lambda t: t[0])
 
 def main_process(board, player_hand):
+    n = 0
     result_list = list()
     all_hands = gen_player_hands(board, player_hand)
     for hand in all_hands:
-        x = gen_cards_from_hand(hand)
+        print n
+        n += 1
         hand_result = evalhands(hand)
         result_list.append(hand_result)
-    final_result = gen_result_list(results)
+    final_result = gen_result_list(result_list)
     return final_result
 
 
-a = Card.Card('Td')
-b = Card.Card('Ac')
-c = Card.Card('Ad')
-d = Card.Card('2h')
-e = Card.Card('Th')
-out_cards = list()
-out_cards.extend([a,b,c,d,e])
-
-f = Card.Card('2c')
-g = Card.Card('3c')
-p_hand = list()
-p_hand.extend([f,g])
-#out_cards = out_cards + p_hand
-z = gen_deck_without_cards(out_cards)
-results = list()
-han = gen_player_hands(out_cards, p_hand)
-for hand in han:
-    x = gen_cards_from_hand(hand)
-    xy = evalhands(hand)
-    results.append(xy)
-maoz = gen_result_list(results)
-print maoz
+# a = Card.Card('Td')
+# b = Card.Card('Ac')
+# c = Card.Card('Ad')
+# d = Card.Card('2h')
+# e = Card.Card('Th')
+# out_cards = list()
+# out_cards.extend([a,b,c,d,e])
+#
+# f = Card.Card('2c')
+# g = Card.Card('3c')
+# p_hand = list()
+# p_hand.extend([f,g])
+# #out_cards = out_cards + p_hand
+# z = gen_deck_without_cards(out_cards)
+# results = list()
+# han = gen_player_hands(out_cards, p_hand)
+# for hand in han:
+#     x = gen_cards_from_hand(hand)
+#     xy = evalhands(hand)
+#     results.append(xy)
+# maoz = gen_result_list(results)
+# print maoz
 
