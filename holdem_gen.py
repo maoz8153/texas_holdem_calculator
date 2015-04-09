@@ -55,9 +55,9 @@ def compair_hands(hand1, hand2):
     if result1 == result2:
         if result1 == 1:
             for i in xrange(4,-1,-1):
-                if hand1[i] > hand2.value_list[i]:
+                if hand1[2][i] > hand2[2][i]:
                     return hand1
-                elif hand1.value_list[i] < hand2.value_list[i]:
+                elif hand1[2][i] < hand2[2][i]:
                     return hand2
             return hand1
         #pair
@@ -100,7 +100,8 @@ def gen_result_list(hands):
     results = None
     for hand in hands:
         if results is not None:
-            results = compair_hands(results, hand.hand_result())
+            hand_r = hand.hand_result()
+            results = compair_hands(results, hand_r)
         else:
             results = hand.hand_result()
     return results
