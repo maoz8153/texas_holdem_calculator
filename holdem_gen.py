@@ -22,8 +22,6 @@ def gen_deck_without_cards(hand, board=0):
         deck.remove(out_card)
     return tuple(deck)
 
-def gen_opponent_cards(deck):
-    return itertools.combinations(deck, 2)
 
 # generate boards cards
 def gen_board_cards(deck, board_len=0):
@@ -43,6 +41,10 @@ def gen_cards_from_hand(hand):
     for card in cards:
         cards_list.append(card)
     return cards
+
+def gen_opponent_cards(deck):
+    random.seed(time.time())
+    yield random.sample(deck, 2)
 
 # takes two hands and return the winner
 def compair_hands(hand1, hand2):
@@ -114,12 +116,9 @@ def hand_mapping(*args):
     return sorted(result_list.item(), key = lambda t: t[0])
 
 def main_process(board, player_hand):
-    n = 0
     result_list = list()
     all_hands = gen_player_hands(board, player_hand)
     for hand in all_hands:
-        print n
-        n += 1
         hand_result = evalhands(hand)
         result_list.append(hand_result)
     final_result = gen_result_list(result_list)

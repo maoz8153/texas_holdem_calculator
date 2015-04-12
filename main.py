@@ -5,6 +5,8 @@ import multiprocessing
 
 
 
+
+
 def run_hand(player_cards):
     deck = holdem_gen.gen_deck_without_cards(player_cards)
     board = holdem_gen.gen_board_cards(deck)
@@ -12,7 +14,7 @@ def run_hand(player_cards):
     worker = result
     print worker
 
-num_processes = multiprocessing.cpu_count() - 1
+
 
 
 
