@@ -42,9 +42,10 @@ def gen_cards_from_hand(hand):
         cards_list.append(card)
     return cards
 
-def gen_opponent_cards(deck):
+def gen_opponent_cards(deck,num):
     random.seed(time.time())
-    yield random.sample(deck, 2)
+    for i in xrange(num):
+        yield random.sample(deck, 2)
 
 # takes two hands and return the winner
 def compair_hands(hand1, hand2):
