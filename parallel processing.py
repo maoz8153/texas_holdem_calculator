@@ -11,8 +11,9 @@ def parallel_process(opponent_cards):
     proc_id = int(multiprocessing.current_process().name[-1]) - 1
     proc = multiprocessing.current_process()
     result = holdem_gen.main_process(board, opponent_cards)
-    result_list[proc] = result
+    #result_list[proc_id] = result
     print proc_id
+    return result
 
 def parallel_initializer(board_cards,result_history):
     parallel_process.board_cards = board_cards
@@ -40,9 +41,9 @@ def main():
     pool = multiprocessing.Pool(processes=num_processes,
                                 initializer=parallel_initializer,
                                 initargs=(board,result_history))
-    pool.map(parallel_process, holdem_gen.gen_opponent_cards(deck))
+    r = pool.map(parallel_process, holdem_gen.gen_opponent_cards(deck))
 
-    print pool
+    print r
 
 if __name__ == '__main__':
     start = time.time()
