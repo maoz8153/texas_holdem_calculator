@@ -25,30 +25,5 @@ class Card:
     def __eq__(self, other):
         return self.value == other.value and self.suit == other.suit
 
-    # def __init__(self):
-    #     self.shap = ''
-    #     self.cardvalue = ''
-    #     self.id = {self.cardvalue + self.shap : [self.cardvalue , self.shap ] }
-    #
-    # @property
-    # def shap(self):
-    #     return self.shap
-    #
-    # @shap.setter
-    # def shap(self, value):
-    #     self.shap = value
-    #
-    # @property
-    # def cardvalue(self):
-    #     return self.cardvalue
-    #
-    # @cardvalue.setter
-    # def cardvalue(self, value):
-    #     self.cardvalue = value
-    #
-    # def create_card(self, shap, value):
-    #     self.cardvalue = value
-    #     self.shap = shap
-    #     self.id = {self.cardvalue + self.shap : [self.cardvalue , self.shap ] }
-    #     return {self.cardvalue + self.shap : [self.cardvalue , self.shap ] }
+
 

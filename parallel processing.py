@@ -1,4 +1,3 @@
-from multiprocessing import Process, Queue
 import multiprocessing
 import EvalHands
 import holdem_gen
@@ -44,7 +43,7 @@ def main():
                                 initargs=(board,result_history))
     r = pool.map(parallel_process, holdem_gen.gen_opponent_cards(deck, 500))
 
-    print r
+    print len(r)
 
 if __name__ == '__main__':
     start = time.time()
