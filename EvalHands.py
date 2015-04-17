@@ -113,13 +113,13 @@ class evalhands():
         if straight:
             if flush:
                 #self.result = [flush, self.value_list[-1]]
-                return [flush, self.value_list[-1]]
+                return flush
             else:
                 #self.result = [straight, self.value_list[-1]]
-                return  [straight, self.value_list[-1]]
+                return  straight
         if flush:
             #self.result = [flush, self.value_list[-1]]
-            return [flush, self.value_list[-1]]
+            return flush
         pair_or_more = self.check_pair_or_more()
         #self.result = pair_or_more
         return pair_or_more
