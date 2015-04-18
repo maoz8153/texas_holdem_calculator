@@ -1,33 +1,28 @@
-import EvalHands
-import holdem_gen
-from multiprocessing import Process, Queue
-import multiprocessing
+import socket
+import parallel_processing
+
+
+def main():
+    server = ''
+    port = 6699
+    sock = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+    try:
+        sock.bind((server, port))
+    except socket.error as e:
+        print (str(e))
+
+    sock.listen(10)
+    c, addr = sock.accept()
+    print "recive data" + str(addr)
+    while True:
+        data = sock.recv(1024)
+        if not data:
+            break
+        card1, card2 = str(data).split()
+        p_data = parallel_processing.main(card1,card2)
 
 
 
-
-
-def run_hand(player_cards):
-    deck = holdem_gen.gen_deck_without_cards(player_cards)
-    board = holdem_gen.gen_board_cards(deck)
-    result = holdem_gen.main_process(board,player_cards)
-    worker = result
-    print worker
-
-
-
-
-
-def mp_handler():
-    x = holdem_gen.Card.Card('Ah')
-    y = holdem_gen.Card.Card('Ad')
-    player_cards = list()
-    player_cards.extend([x,y])
-    p = multiprocessing.Process(target=run_hand, args=(player_cards,))
-    p.start()
-    p.join()
-    #p = multiprocessing.Pool(3)
-    #p.map(run_hand, player_card)
 
 if __name__ == '__main__':
-    mp_handler()
+    main()

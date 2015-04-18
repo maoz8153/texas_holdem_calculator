@@ -5,6 +5,7 @@ import time
 
 
 def parallel_process(opponent_cards):
+    test = 0
     player_hand = parallel_process.player_hand
     board = parallel_process.board_cards
     result_list = parallel_process.result_history
@@ -13,7 +14,8 @@ def parallel_process(opponent_cards):
     result = holdem_gen.main_process(board, opponent_cards)
     f_result = holdem_gen.compair_hands(player_hand, result)
     if f_result == result:
-        return result
+        test = test + 1
+    return result ,test
     #result_list[proc_id + 1] = result
 
 
@@ -30,12 +32,9 @@ def main_hand(player_cards,board=None):
     worker = result
     print worker
 
-def main():
-    res = []
-    x = holdem_gen.Card.Card('Ah')
-    y = holdem_gen.Card.Card('Ad')
+def main(card1,card2):
     player_cards = list()
-    player_cards.extend([x,y])
+    player_cards.extend([card1,card2])
     deck_before = holdem_gen.gen_deck_without_cards(player_cards)
     board = holdem_gen.gen_board_cards(deck_before)
     p_hand = holdem_gen.main_process(board, player_cards)
@@ -47,8 +46,12 @@ def main():
                                 initializer=parallel_initializer,
                                 initargs=(board,result_history,p_hand))
     r = pool.map(parallel_process, holdem_gen.gen_opponent_cards(deck, 100))
-
-    print r
+    reslt, s = zip(*r)
+    print p_hand
+    print "---------------"
+    print reslt
+    print "---------------"
+    print sum(s)
 
 if __name__ == '__main__':
     start = time.time()
