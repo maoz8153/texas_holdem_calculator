@@ -33,8 +33,10 @@ def main_hand(player_cards,board=None):
     print worker
 
 def main(card1,card2):
+    card1_r =  holdem_gen.Card.Card(card1)
+    card2_r =  holdem_gen.Card.Card(card2)
     player_cards = list()
-    player_cards.extend([card1,card2])
+    player_cards.extend([card1_r,card2_r])
     deck_before = holdem_gen.gen_deck_without_cards(player_cards)
     board = holdem_gen.gen_board_cards(deck_before)
     p_hand = holdem_gen.main_process(board, player_cards)
@@ -53,7 +55,7 @@ def main(card1,card2):
     print "---------------"
     print sum(s)
 
-if __name__ == '__main__':
-    start = time.time()
-    main()
-    print "\nTime elapsed(seconds): ", time.time() - start
+# if __name__ == '__main__':
+#     start = time.time()
+#     main(card1='',card2='')
+#     print "\nTime elapsed(seconds): ", time.time() - start

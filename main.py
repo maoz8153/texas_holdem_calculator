@@ -6,21 +6,22 @@ def main():
     server = ''
     port = 6699
     sock = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-    try:
-        sock.bind((server, port))
-    except socket.error as e:
-        print (str(e))
+    #sock = socket.socket()
+    #try:
+    sock.bind((server, port))
+    #except socket.error as e:
+        #print (str(e))
 
     sock.listen(10)
     c, addr = sock.accept()
     print "recive data" + str(addr)
     while True:
-        data = sock.recv(1024)
+        data = c.recv(1024)
         if not data:
             break
-        card1, card2 = str(data).split()
+        card1, card2 = str(data).split(' ')
         p_data = parallel_processing.main(card1,card2)
-
+    sock.close()
 
 
 
