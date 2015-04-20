@@ -3,7 +3,7 @@ request=require("request");
 var app  = module.exports = express();
 
 var options = {
-    url: 'http://127.0.0.1:9988'
+    url: 'http://127.0.0.1:6699'
 };
 
 request.get(options,function(error,response,body){
