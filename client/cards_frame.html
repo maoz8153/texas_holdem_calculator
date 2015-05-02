@@ -1,0 +1,41 @@
+
+<div ng-controller="ModalDemoCtrl">
+    <div class="row">
+    <div class="modal-body">
+        <div class="row">
+            <div ng-repeat="card in heart_cards track by $index" >
+                <div class="col-xs-1 nopadding">
+                    <img ng-src="cards/{{card.imgLink}}" style="width: 60px;">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div ng-repeat="card in dim_cards track by $index" >
+                <div class="col-xs-1 nopadding">
+                    <img ng-src="cards/{{card.imgLink}}" style="width: 60px;">
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div ng-repeat="card in club_cards track by $index" >
+                <div class="col-xs-1 nopadding">
+                    <img ng-src="cards/{{card.imgLink}}" style="width: 60px;">
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div ng-repeat="card in spade_cards track by $index" >
+                <div class="col-xs-1 nopadding">
+                    <img ng-src="cards/{{card.imgLink}}" style="width: 60px;">
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
+
+
+

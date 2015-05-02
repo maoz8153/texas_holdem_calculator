@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if (IE 9)]><html class="no-js ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en-US" ng-app="poker"> <!--<![endif]-->
+<head>
+
+    <!-- Meta Tags -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <title>Texas hodem calculator</title>
+
+    <meta name="description" content="Insert Your Site Description" />
+
+    <!-- Mobile Specifics -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="MobileOptimized" content="320"/>
+
+    <!-- Mobile Internet Explorer ClearType Technology -->
+    <!--[if IEMobile]>  <meta http-equiv="cleartype" content="on">  <![endif]-->
+
+    <!-- Bootstrap -->
+    <link href="_include/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Main Style -->
+    <link href="_include/css/main.css" rel="stylesheet">
+
+    <!-- Supersized -->
+    <link href="_include/css/supersized.css" rel="stylesheet">
+    <link href="_include/css/supersized.shutter.css" rel="stylesheet">
+
+    <!-- FancyBox -->
+    <link href="_include/css/fancybox/jquery.fancybox.css" rel="stylesheet">
+
+    <!-- Font Icons -->
+    <link href="_include/css/fonts.css" rel="stylesheet">
+
+    <!-- Shortcodes -->
+    <link href="_include/css/shortcodes.css" rel="stylesheet">
+
+    <!-- Responsive -->
+    <link href="_include/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="_include/css/responsive.css" rel="stylesheet">
+
+    <!-- Supersized -->
+    <link href="_include/css/supersized.css" rel="stylesheet">
+    <link href="_include/css/supersized.shutter.css" rel="stylesheet">
+
+    <!-- Google Font -->
+    <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,200italic,300,300italic,400italic,600,600italic,700,700italic,900' rel='stylesheet' type='text/css'>
+
+    <!-- Fav Icon -->
+    <link rel="shortcut icon" href="#">
+
+    <link rel="apple-touch-icon" href="#">
+    <link rel="apple-touch-icon" sizes="114x114" href="#">
+    <link rel="apple-touch-icon" sizes="72x72" href="#">
+    <link rel="apple-touch-icon" sizes="144x144" href="#">
+
+    <!-- Modernizr -->
+    <script src="_include/js/modernizr.js"></script>
+
+
+</head>
+
+
+<body>
+
+<!-- This section is for Splash Screen -->
+<div class="ole">
+    <section id="jSplash">
+        <div id="circle"></div>
+    </section>
+</div>
+<!-- End of Splash Screen -->
+
+<!-- Homepage Slider -->
+<div id="home-slider">
+    <div class="overlay"></div>
+
+    <div class="slider-text">
+        <div id="slidecaption"></div>
+    </div>
+
+    <div class="control-nav">
+        <a id="prevslide" class="load-item"><i class="font-icon-arrow-simple-left"></i></a>
+        <a id="nextslide" class="load-item"><i class="font-icon-arrow-simple-right"></i></a>
+        <ul id="slide-list"></ul>
+
+        <a id="nextsection" href="#work"><i class="font-icon-arrow-simple-down"></i></a>
+    </div>
+</div>
+<!-- End Homepage Slider -->
+
+<!-- Header -->
+
+<header></header>
+<!-- End Header -->
+
+<!-- Our Work Section -->
+<div id="work" class="page">
+    <div class="container">
+        <!-- Title Page -->
+        <div class="row">
+            <div class="span12">
+                <div class="title-page">
+                    <h2 class="title">Poker calculator</h2>
+                    <h3 class="title-description">Please fill this form</h3><!-- need to set hide and show base on the phase-->
+                </div>
+            </div>
+        </div>
+        <!-- End Title Page -->
+
+        <!-- ng modal -->
+  <!--      <div ng-controller="ModalDemoCtrl">
+            <script type="text/ng-template" id="myModalContent.html">
+                <div class="modal-header">
+                    <h3 class="modal-title">I'm a modal!</h3>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        <li ng-repeat="item in items">
+                            <a ng-click="selected.item = item">{{ item }}</a>
+                        </li>
+                    </ul>
+                    Selected: <b>{{ selected.item }}</b>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" ng-click="ok()">OK</button>
+                    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+                </div>
+            </script>
+
+            <button class="btn btn-default" ng-click="open()">Open me!</button>
+            <button class="btn btn-default" ng-click="open('lg')">Large modal</button>
+            <button class="btn btn-default" ng-click="open('sm')">Small modal</button>
+            <button class="btn btn-default" ng-click="toggleAnimation()">Toggle Animation ({{ animationsEnabled }})</button>
+            <div ng-show="selected">Selection from a modal: {{ selected }}</div>
+        </div>-->
+        <div ng-controller="ModalDemoCtrl">
+            <button class="btn btn-default" ng-click="open()">Open me!</button>
+        </div>
+        <div class="row">
+
+            <div class="span3"></div>
+
+            <form class="form-inline" id="sl_form">
+
+                <div class="span9">
+                    <form class="form-horizontal" role="form">
+                        <div class="row">
+                            <div class="form-group form-group-lg ">
+                                <label for="num_players" class="control-label input-large col-sm-6">Number of board cards:</label>
+                                <label class="radio-inline col-sm-offset-2">
+                                    <input type="radio" name="num_players" value="3" checked >3 Cards
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="num_players" value="4">4 Cards
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="num_players" value="5">5 Cards
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group  col-sm-offset-2 form-group-lg">
+                                <label class="control-label input-large col-sm-6" for="num_players">Number of players:</label>
+                                <select class="form-contro col-sm-6" id="sel1">
+                                    <option value="1" selected="selected">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <a id="next" class="btn btn-default" onclick="nxbtn()">Next</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </form>
+        </div>
+        <div id="mythum" style=" visibility: hidden;;">
+            <div class="row" >
+                <!-- here is the second stage in the form   ng - hide , ng-show-->
+                <div class="span3 " ><h4>Select your cards</h4></div>
+                <div class="span6 " >
+                    <div class="row">
+                        <section id="projects">
+                            <ul id="thumbs">
+
+                                <!-- Item Project and Filter Name -->
+                                <li class="item-thumbs span2 design">
+                                    <!-- Fancybox - card Enabled - Title - Full Image -->
+                                    <a class="hover-wrap fancybox iframe" data-fancybox-group="iframe" title="The City" href="cards_frame.html">
+                                        <span class="overlay-img"></span>
+                                        <span class="overlay-img-thumb font-icon-plus"></span>
+                                    </a>
+                                    <!-- Thumb Image and Description -->
+                                    <img src="_include/img/work/thumbs/image-01.jpg" >
+                                </li>
+                                <!-- End Item Project -->
+                                <li class="item-thumbs span2 design">
+                                    <!-- Fancybox - card Enabled - Title - Full Image -->
+                                    <a class="hover-wrap fancybox" data-fancybox-group="card" title="The Office" href="_include/img/work/full/image-02-full.jpg">
+                                        <span class="overlay-img"></span>
+                                        <span class="overlay-img-thumb font-icon-plus"></span>
+                                    </a>
+                                    <!-- Thumb Image and Description -->
+                                    <img src="_include/img/work/thumbs/image-02.jpg" >
+                                </li>
+
+                            </ul>
+                        </section>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row" >
+                <!-- here is the second stage in the form   ng - hide , ng-show-->
+                <div class="span3 " ><h4>Select your board cards</h4></div>
+                <div class="span6 " >
+                    <div class="row">
+                        <section id="projects">
+                            <ul id="thumbs">
+
+                                <!-- Item Project and Filter Name -->
+                                <li class="item-thumbs span2 design">
+                                    <!-- Fancybox - card Enabled - Title - Full Image -->
+                                    <a class="hover-wrap fancybox" data-fancybox-group="card" title="The City" href="cards_frame.html">
+                                        <span class="overlay-img"></span>
+                                        <span class="overlay-img-thumb font-icon-plus"></span>
+                                    </a>
+                                    <!-- Thumb Image and Description -->
+                                    <img src="_include/img/work/thumbs/image-01.jpg" >
+                                </li>
+                                <!-- End Item Project -->
+                                <li class="item-thumbs span2 design">
+                                    <!-- Fancybox - card Enabled - Title - Full Image -->
+                                    <a class="hover-wrap fancybox" data-fancybox-group="card" title="The Office" href="_include/img/work/full/image-02-full.jpg">
+                                        <span class="overlay-img"></span>
+                                        <span class="overlay-img-thumb font-icon-plus"></span>
+                                    </a>
+                                    <!-- Thumb Image and Description -->
+                                    <img src="_include/img/work/thumbs/image-02.jpg" >
+                                </li>
+
+
+                                <li class="item-thumbs span2 design">
+                                    <!-- Fancybox - card Enabled - Title - Full Image -->
+                                    <a class="hover-wrap fancybox" data-fancybox-group="card" title="The Office" href="_include/img/work/full/image-02-full.jpg">
+                                        <span class="overlay-img"></span>
+                                        <span class="overlay-img-thumb font-icon-plus"></span>
+                                    </a>
+                                    <!-- Thumb Image and Description -->
+                                    <img src="_include/img/work/thumbs/image-02.jpg" >
+                                </li>
+
+                            </ul>
+                        </section>
+                    </div>
+
+                </div>
+
+
+
+
+            </div>
+
+        </div>
+    </div>
+    <!-- End Portfolio Projects -->
+</div>
+</div>
+<!-- End Our Work Section -->
+
+<!-- About Section -->
+
+<footer>
+    <p class="credits"></p>
+</footer>
+<!-- End Footer -->
+
+<!-- Back To Top -->
+<a id="back-to-top" href="#">
+    <i class="font-icon-arrow-simple-up"></i>
+</a>
+<!-- End Back to Top -->
+
+<script type="text/javascript">
+     function nxbtn(){
+                var next = document.getElementById('mythum');
+                var pre = document.getElementById('sl_form');
+                var radios = document.getElementsByName('num_players');
+                var val_radio ;
+                for (var i = 0, length = radios.length; i < length; i++) {
+                    if (radios[i].checked) {
+                            val_radio = radios[i].value;
+                        break;
+                    }
+                }
+                var e = document.getElementById("sel1");
+                var num_users = e.options[e.selectedIndex].value;
+                console.log(num_users, val_radio);
+                pre.style.display = "none";
+                next.style.visibility = "visible";
+            }
+
+</script>
+
+<!-- Js -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> <!-- jQuery Core -->
+<script src="_include/js/bootstrap.min.js"></script> <!-- Bootstrap -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="_include/js/supersized.3.2.7.min.js"></script> <!-- Slider -->
+<script src="_include/js/waypoints.js"></script> <!-- WayPoints -->
+<script src="_include/js/waypoints-sticky.js"></script> <!-- Waypoints for Header -->
+<script src="_include/js/jquery.isotope.js"></script> <!-- Isotope Filter -->
+<script src="_include/js/jquery.fancybox.pack.js"></script> <!-- Fancybox -->
+<script src="_include/js/jquery.fancybox-media.js"></script> <!-- Fancybox for Media -->
+<script src="_include/js/jquery.tweet.js"></script> <!-- Tweet -->
+<script src="_include/js/plugins.js"></script> <!-- Contains: jPreloader, jQuery Easing, jQuery ScrollTo, jQuery One Page Navi -->
+
+<script src="_include/js/main.js"></script> <!-- Default JS -->
+<script type="text/javascript" src="thumbs.js"></script>
+<!-- End Js -->
+
+</body>
+</html>

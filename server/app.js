@@ -3,7 +3,10 @@ request=require("request");
 var app  = module.exports = express();
 
 var options = {
-    url: 'http://127.0.0.1:6699'
+    host : 'http://127.0.0.1',
+    port : 6699,
+    path: '/',
+    method : 'POST'
 };
 
 request.get(options,function(error,response,body){
