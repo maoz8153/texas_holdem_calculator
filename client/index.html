@@ -112,7 +112,7 @@
 <!-- End Header -->
 
 <!-- Our Work Section -->
-<div id="work" class="page">
+<div id="work" class="page" ng-controller="ModalDemoCtrl">
     <div class="container">
         <!-- Title Page -->
         <div class="row">
@@ -153,9 +153,9 @@
                   <button class="btn btn-default" ng-click="toggleAnimation()">Toggle Animation ({{ animationsEnabled }})</button>
                   <div ng-show="selected">Selection from a modal: {{ selected }}</div>
               </div>-->
-        <div ng-controller="ModalDemoCtrl">
-            <button class="btn btn-default" ng-click="open()">Open me!</button>
-        </div>
+<!--        <div ng-controller="ModalDemoCtrl">
+            <button class="btn btn-default" ng-click="open('700px')">Open me!</button>
+        </div>-->
         <div class="row">
 
             <div class="span3"></div>
@@ -216,8 +216,7 @@
                                 <!-- Item Project and Filter Name -->
                                 <li class="item-thumbs span2 design">
                                     <!-- Fancybox - card Enabled - Title - Full Image -->
-                                    <a class="hover-wrap fancybox iframe" data-fancybox-group="iframe" title="The City"
-                                       href="cards_frame.html">
+                                    <a ng-click="open('700px')" class="hover-wrap" >
                                         <span class="overlay-img"></span>
                                         <span class="overlay-img-thumb font-icon-plus"></span>
                                     </a>
@@ -227,8 +226,7 @@
                                 <!-- End Item Project -->
                                 <li class="item-thumbs span2 design">
                                     <!-- Fancybox - card Enabled - Title - Full Image -->
-                                    <a class="hover-wrap fancybox" data-fancybox-group="card" title="The Office"
-                                       href="_include/img/work/full/image-02-full.jpg">
+                                    <a  ng-click="open('700px')" class="hover-wrap" ">
                                         <span class="overlay-img"></span>
                                         <span class="overlay-img-thumb font-icon-plus"></span>
                                     </a>
@@ -253,8 +251,7 @@
                                 <!-- Item Project and Filter Name -->
                                 <li class="item-thumbs span2 design">
                                     <!-- Fancybox - card Enabled - Title - Full Image -->
-                                    <a class="hover-wrap fancybox" data-fancybox-group="card" title="The City"
-                                       href="cards_frame.html">
+                                    <a  ng-click="open('700px')" class="hover-wrap" >
                                         <span class="overlay-img"></span>
                                         <span class="overlay-img-thumb font-icon-plus"></span>
                                     </a>
@@ -264,8 +261,7 @@
                                 <!-- End Item Project -->
                                 <li class="item-thumbs span2 design">
                                     <!-- Fancybox - card Enabled - Title - Full Image -->
-                                    <a class="hover-wrap fancybox" data-fancybox-group="card" title="The Office"
-                                       href="_include/img/work/full/image-02-full.jpg">
+                                    <a  ng-click="open('700px')" class="hover-wrap" >
                                         <span class="overlay-img"></span>
                                         <span class="overlay-img-thumb font-icon-plus"></span>
                                     </a>
@@ -276,8 +272,7 @@
 
                                 <li class="item-thumbs span2 design">
                                     <!-- Fancybox - card Enabled - Title - Full Image -->
-                                    <a class="hover-wrap fancybox" data-fancybox-group="card" title="The Office"
-                                       href="_include/img/work/full/image-02-full.jpg">
+                                    <a  ng-click="open('700px')" class="hover-wrap" >
                                         <span class="overlay-img"></span>
                                         <span class="overlay-img-thumb font-icon-plus"></span>
                                     </a>
