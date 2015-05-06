@@ -25,7 +25,7 @@ app.factory('Cards', function () {
 app.controller('ModalDemoCtrl', function ($scope, $modal, $log, Cards ) {
 
   $scope.items = ['item1', 'item2', 'item3'];
-
+  $scope.card_display = Cards;
   $scope.animationsEnabled = true;
 
   $scope.open = function (size) {
@@ -33,7 +33,7 @@ app.controller('ModalDemoCtrl', function ($scope, $modal, $log, Cards ) {
     var modalInstance = $modal.open({
       animation: $scope.animationsEnabled,
       templateUrl: 'cards_frame.html',
-      windowClass: 'center-modal',
+      windowClass: 'app-modal-window',
       scope : $scope,
       controller: 'ModalInstanceCtrl',
       size: size,
@@ -63,11 +63,7 @@ app.controller('ModalDemoCtrl', function ($scope, $modal, $log, Cards ) {
 app.controller('ModalInstanceCtrl', function ($scope, $modalInstance, items, Cards) {
 
 
-    $scope.card_display = Cards;
-    $scope.heart_cards = $scope.card_display[0];
-    $scope.dim_cards = $scope.card_display[1];
-    $scope.club_cards = $scope.card_display[2];
-    $scope.spade_cards = $scope.card_display[3];
+    $scope.card_display.shaps = Cards;
   $scope.items = items;
   $scope.selected = {
     item: $scope.items[0]
@@ -84,10 +80,7 @@ app.controller('ModalInstanceCtrl', function ($scope, $modalInstance, items, Car
 
 
 app.controller('MainCtrl', function($scope, Cards) {
-    $scope.card_display = Cards;
-    $scope.heart_cards = $scope.card_display[0];
-    $scope.dim_cards = $scope.card_display[1];
-    $scope.club_cards = $scope.card_display[2];
-    $scope.spade_cards = $scope.card_display[3];
+    $scope.card_display.shaps = Cards;
+
 
 });
