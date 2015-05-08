@@ -81,6 +81,12 @@ app.controller('ModalInstanceCtrl', function ($scope, $modalInstance, items, Car
 
 app.controller('MainCtrl', function($scope, Cards) {
     $scope.card_display.shaps = Cards;
+    $scope.formPoker = {
+        numberOfPlayers : 1,
+        numberOfBoardCards: 3
+    }
+    $scope.playerCards = [];
+    $scope.boardCards =[];
 
 
 });
