@@ -1,0 +1,53 @@
+<script type="text/javascript">
+     function nxbtn(){
+                var next = document.getElementById('mythum');
+                var pre = document.getElementById('sl_form');
+                var radios = document.getElementsByName('num_players');
+                var val_radio ;
+                for (var i = 0, length = radios.length; i < length; i++) {
+                    if (radios[i].checked) {
+                            val_radio = radios[i].value;
+                        break;
+                    }
+                }
+                var e = document.getElementById("sel1");
+                var num_users = e.options[e.selectedIndex].value;
+                console.log(num_users, val_radio);
+                pre.style.display = "none";
+                next.style.visibility = "visible";
+            }
+
+
+</script>
+
+<!-- Js -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<!-- jQuery Core -->
+<script src="_include/js/bootstrap.min.js"></script>
+<!-- Bootstrap -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="_include/js/supersized.3.2.7.min.js"></script>
+<!-- Slider -->
+<script src="_include/js/waypoints.js"></script>
+<!-- WayPoints -->
+<script src="_include/js/waypoints-sticky.js"></script>
+<!-- Waypoints for Header -->
+<script src="_include/js/jquery.isotope.js"></script>
+<!-- Isotope Filter -->
+<script src="_include/js/jquery.fancybox.pack.js"></script>
+<!-- Fancybox -->
+<script src="_include/js/jquery.fancybox-media.js"></script>
+<!-- Fancybox for Media -->
+<script src="_include/js/jquery.tweet.js"></script>
+<!-- Tweet -->
+<script src="_include/js/plugins.js"></script>
+<!-- Contains: jPreloader, jQuery Easing, jQuery ScrollTo, jQuery One Page Navi -->
+
+<script src="_include/js/main.js"></script>
+<!-- Default JS -->
+<script type="text/javascript" src="thumbs.js"></script>
+<!-- End Js -->
+
+</body>
+</html>

@@ -1,0 +1,233 @@
+<%- include('./partial/header'); -%>
+
+
+<!-- This section is for Splash Screen -->
+<div class="ole">
+    <section id="jSplash">
+        <div id="circle"></div>
+    </section>
+</div>
+<!-- End of Splash Screen -->
+
+<!-- Homepage Slider -->
+<div id="home-slider">
+    <div class="overlay"></div>
+
+    <div class="slider-text">
+        <div id="slidecaption"></div>
+    </div>
+
+    <div class="control-nav">
+        <a id="prevslide" class="load-item"><i class="font-icon-arrow-simple-left"></i></a>
+        <a id="nextslide" class="load-item"><i class="font-icon-arrow-simple-right"></i></a>
+        <ul id="slide-list"></ul>
+
+        <a id="nextsection" href="#work"><i class="font-icon-arrow-simple-down"></i></a>
+    </div>
+</div>
+<!-- End Homepage Slider -->
+
+<!-- Header -->
+
+<header></header>
+<!-- End Header -->
+
+<!-- Our Work Section -->
+<div id="work" class="page" ng-controller="ModalDemoCtrl">
+    <div class="container">
+        <!-- Title Page -->
+        <div class="row">
+            <div class="span12">
+                <div class="title-page">
+                    <h2 class="title">Poker calculator</h2>
+
+                    <h3 class="title-description">Please fill this form</h3>
+                    <!-- need to set hide and show base on the phase-->
+                </div>
+            </div>
+        </div>
+        <!-- End Title Page -->
+
+        <!-- ng modal -->
+        <!--      <div ng-controller="ModalDemoCtrl">
+                  <script type="text/ng-template" id="myModalContent.html">
+                      <div class="modal-header">
+                          <h3 class="modal-title">I'm a modal!</h3>
+                      </div>
+                      <div class="modal-body">
+                          <ul>
+                              <li ng-repeat="item in items">
+                                  <a ng-click="selected.item = item">{{ item }}</a>
+                              </li>
+                          </ul>
+                          Selected: <b>{{ selected.item }}</b>
+                      </div>
+                      <div class="modal-footer">
+                          <button class="btn btn-primary" ng-click="ok()">OK</button>
+                          <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+                      </div>
+                  </script>
+
+                  <button class="btn btn-default" ng-click="open()">Open me!</button>
+                  <button class="btn btn-default" ng-click="open('lg')">Large modal</button>
+                  <button class="btn btn-default" ng-click="open('sm')">Small modal</button>
+                  <button class="btn btn-default" ng-click="toggleAnimation()">Toggle Animation ({{ animationsEnabled }})</button>
+                  <div ng-show="selected">Selection from a modal: {{ selected }}</div>
+              </div>-->
+<!--        <div ng-controller="ModalDemoCtrl">
+            <button class="btn btn-default" ng-click="open('700px')">Open me!</button>
+        </div>-->
+        <div class="row">
+
+            <div class="span3"></div>
+
+            <form class="form-inline" id="sl_form">
+
+                <div class="span9">
+                    <form class="form-horizontal" role="form">
+                        <div class="row">
+                            <div class="form-group form-group-lg ">
+                                <label for="num_players" class="control-label input-large col-sm-6">Number of board
+                                    cards:</label>
+                                <label class="radio-inline col-sm-offset-2">
+                                    <input type="radio" name="num_players" ng-model="formPoker.numberOfBoardCards" value="3" checked>3 Cards
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="num_players" ng-model="formPoker.numberOfBoardCards" value="4">4 Cards
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="num_players" ng-model="formPoker.numberOfBoardCards" value="5">5 Cards
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group  col-sm-offset-2 form-group-lg">
+                                <label class="control-label input-large col-sm-6" for="num_players">Number of
+                                    players:</label>
+                                <select class="form-contro col-sm-6" id="sel1">
+                                    <option value="1" selected="selected">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <a id="next" class="btn btn-default" onclick="nxbtn()">Next</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </form>
+        </div>
+        <div id="mythum" style=" visibility: hidden;;">
+            <div class="row">
+                <!-- here is the second stage in the form   ng - hide , ng-show-->
+                <div class="span3 "><h4>Select your cards</h4></div>
+                <div class="span6 ">
+                    <div class="row">
+                        <section id="projects">
+                            <ul id="thumbs">
+
+                                <!-- Item Project and Filter Name -->
+                                <li class="item-thumbs span2 design">
+                                    <!-- Fancybox - card Enabled - Title - Full Image -->
+                                    <a ng-click="open('700px')" class="hover-wrap" >
+                                        <span class="overlay-img"></span>
+                                        <span class="overlay-img-thumb font-icon-plus"></span>
+                                    </a>
+                                    <!-- Thumb Image and Description -->
+                                    <img src="_include/img/work/thumbs/image-01.jpg">
+                                </li>
+                                <!-- End Item Project -->
+                                <li class="item-thumbs span2 design">
+                                    <!-- Fancybox - card Enabled - Title - Full Image -->
+                                    <a  ng-click="open('700px')" class="hover-wrap" ">
+                                        <span class="overlay-img"></span>
+                                        <span class="overlay-img-thumb font-icon-plus"></span>
+                                    </a>
+                                    <!-- Thumb Image and Description -->
+                                    <img src="_include/img/work/thumbs/image-02.jpg">
+                                </li>
+
+                            </ul>
+                        </section>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <!-- here is the second stage in the form   ng - hide , ng-show-->
+                <div class="span3 "><h4>Select your board cards</h4></div>
+                <div class="span6 ">
+                    <div class="row">
+                        <section id="projects">
+                            <ul id="thumbs">
+
+                                <!-- Item Project and Filter Name -->
+                                <li class="item-thumbs span2 design">
+                                    <!-- Fancybox - card Enabled - Title - Full Image -->
+                                    <a  ng-click="open('700px')" class="hover-wrap" >
+                                        <span class="overlay-img"></span>
+                                        <span class="overlay-img-thumb font-icon-plus"></span>
+                                    </a>
+                                    <!-- Thumb Image and Description -->
+                                    <img src="_include/img/work/thumbs/image-01.jpg">
+                                </li>
+                                <!-- End Item Project -->
+                                <li class="item-thumbs span2 design">
+                                    <!-- Fancybox - card Enabled - Title - Full Image -->
+                                    <a  ng-click="open('700px')" class="hover-wrap" >
+                                        <span class="overlay-img"></span>
+                                        <span class="overlay-img-thumb font-icon-plus"></span>
+                                    </a>
+                                    <!-- Thumb Image and Description -->
+                                    <img src="_include/img/work/thumbs/image-02.jpg">
+                                </li>
+
+
+                                <li class="item-thumbs span2 design">
+                                    <!-- Fancybox - card Enabled - Title - Full Image -->
+                                    <a  ng-click="open('700px')" class="hover-wrap" >
+                                        <span class="overlay-img"></span>
+                                        <span class="overlay-img-thumb font-icon-plus"></span>
+                                    </a>
+                                    <!-- Thumb Image and Description -->
+                                    <img src="_include/img/work/thumbs/image-02.jpg">
+                                </li>
+
+                            </ul>
+                        </section>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+    <!-- End Portfolio Projects -->
+</div>
+</div>
+<!-- End Our Work Section -->
+
+<!-- About Section -->
+
+<footer>
+    <p class="credits"></p>
+</footer>
+<!-- End Footer -->
+
+<!-- Back To Top -->
+<a id="back-to-top" href="#">
+    <i class="font-icon-arrow-simple-up"></i>
+</a>
+<!-- End Back to Top -->
+
+<%- include('./partial/footer'); -%>
