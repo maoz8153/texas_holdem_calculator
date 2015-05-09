@@ -1,0 +1,49 @@
+
+<div class="row">
+
+    <div class="span3"></div>
+
+    <form class="form-inline" id="sl_form">
+
+        <div class="span9">
+            <form class="form-horizontal" role="form">
+                <div class="row">
+                    <div class="form-group form-group-lg ">
+                        <label for="num_players" class="control-label input-large col-sm-6">Number of board
+                            cards:</label>
+                        <label class="radio-inline col-sm-offset-2">
+                            <input type="radio" name="num_players" ng-model="formPoker.numberOfBoardCards" value="3" checked>3 Cards
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="num_players" ng-model="formPoker.numberOfBoardCards" value="4">4 Cards
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="num_players" ng-model="formPoker.numberOfBoardCards" value="5">5 Cards
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group  col-sm-offset-2 form-group-lg">
+                        <label class="control-label input-large col-sm-6" for="num_players">Number of
+                            players:</label>
+                        <select class="form-contro col-sm-6" id="sel1">
+                            <option value="1" selected="selected">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <a id="next" class="btn btn-default" onclick="nxbtn()">Next</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </form>
+</div>
