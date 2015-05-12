@@ -24,9 +24,30 @@ app.factory('Cards', function () {
 );
 app.controller('ModalDemoCtrl', function ($scope, $modal, $log, Cards ) {
 
+
+    $scope.formPoker = {
+        numberOfPlayers : [1,2,3,4,5,6,7,8],
+        numberOfBoardCards: 3
+
+    }
+    $scope.playerCards = [];
+    $scope.boardCards =[];
+    $scope.selected_form = false;
+    $scope.select_cards = false;
+
+   $scope.updateFormSetting = function (numberOfCards, numberOfPlayer) {
+        $scope.selectedNumberOfPlayers = numberOfPlayer;
+        $scope.selectedNumberOfCards = numberOfCards;
+        $scope.selected_form = true;
+        $scope.select_cards = true;
+
+  }
+
   $scope.items = ['item1', 'item2', 'item3'];
   $scope.card_display = Cards;
   $scope.animationsEnabled = true;
+  $scope.selectedNumberOfPlayers = '';
+  $scope.selectedNumberOfCards = '';
 
   $scope.open = function (size) {
 
@@ -63,8 +84,9 @@ app.controller('ModalDemoCtrl', function ($scope, $modal, $log, Cards ) {
 app.controller('ModalInstanceCtrl', function ($scope, $modalInstance, items, Cards) {
 
 
-    $scope.card_display.shaps = Cards;
+  $scope.card_display.shaps = Cards;
   $scope.items = items;
+
   $scope.selected = {
     item: $scope.items[0]
   };
@@ -82,11 +104,12 @@ app.controller('ModalInstanceCtrl', function ($scope, $modalInstance, items, Car
 app.controller('MainCtrl', function($scope, Cards) {
     $scope.card_display.shaps = Cards;
     $scope.formPoker = {
-        numberOfPlayers : 1,
-        numberOfBoardCards: 3
+        numberOfPlayers : [1,2,3,4,5,6,7,8],
+        numberOfBoardCards: [3,4,5]
     }
     $scope.playerCards = [];
     $scope.boardCards =[];
 
 
 });
+
