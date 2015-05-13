@@ -29,19 +29,30 @@ app.controller('ModalDemoCtrl', function ($scope, $modal, $log, Cards ) {
         numberOfPlayers : [1,2,3,4,5,6,7,8],
         numberOfBoardCards: 3
 
-    }
+    };
+    var cardDefault = {
+      value : 0,
+      shap : '',
+      imgLink : '_include/img/work/thumbs/image-02.jpg'
+    };
     $scope.playerCards = [];
     $scope.boardCards =[];
     $scope.selected_form = false;
     $scope.select_cards = false;
+    $scope.playerCards.push(cardDefault);
+    $scope.playerCards.push(cardDefault);
 
    $scope.updateFormSetting = function (numberOfCards, numberOfPlayer) {
         $scope.selectedNumberOfPlayers = numberOfPlayer;
         $scope.selectedNumberOfCards = numberOfCards;
         $scope.selected_form = true;
         $scope.select_cards = true;
+        for (var i = 0; i < numberOfCards; i++) {
+          $scope.boardCards.push(cardDefault);
+        }
 
-  }
+
+  };
 
   $scope.items = ['item1', 'item2', 'item3'];
   $scope.card_display = Cards;
@@ -49,7 +60,7 @@ app.controller('ModalDemoCtrl', function ($scope, $modal, $log, Cards ) {
   $scope.selectedNumberOfPlayers = '';
   $scope.selectedNumberOfCards = '';
 
-  $scope.open = function (size) {
+  $scope.open = function (size,card) {
 
     var modalInstance = $modal.open({
       animation: $scope.animationsEnabled,
@@ -60,7 +71,7 @@ app.controller('ModalDemoCtrl', function ($scope, $modal, $log, Cards ) {
       size: size,
       resolve: {
         items: function () {
-          return $scope.items;
+          return card;
         }
       }
     });

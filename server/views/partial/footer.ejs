@@ -1,24 +1,4 @@
-<script type="text/javascript">
-     function nxbtn(){
-                var next = document.getElementById('mythum');
-                var pre = document.getElementById('sl_form');
-                var radios = document.getElementsByName('num_players');
-                var val_radio ;
-                for (var i = 0, length = radios.length; i < length; i++) {
-                    if (radios[i].checked) {
-                            val_radio = radios[i].value;
-                        break;
-                    }
-                }
-                var e = document.getElementById("sel1");
-                var num_users = e.options[e.selectedIndex].value;
-                console.log(num_users, val_radio);
-                pre.style.display = "none";
-                next.style.visibility = "visible";
-            }
 
-
-</script>
 
 <!-- Js -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -48,7 +28,7 @@
 <script src="_include/js/main.js"></script>
 <!-- Default JS -->
 <script type="text/javascript" src="thumbs.js"></script>
-<!-- End Js -->
+<script type="text/javascript" src="card_service.js"></script>
 
 </body>
 </html>
