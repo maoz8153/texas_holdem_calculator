@@ -58,8 +58,8 @@ app.controller('MainCtrl', function($scope, Cards) {
                     controller: 'ModalInstanceCtrl',
                     size: size,
                     resolve: {
-                        items: function() {
-                            return card;
+                        card_display: function() {
+                            return $scope.card_display;
                         }
                     }
                 });
@@ -75,14 +75,14 @@ app.controller('MainCtrl', function($scope, Cards) {
         });
         // Please note that $modalInstance represents a modal window (instance) dependency.
         // It is not the same as the $modal service used above.
-        app.controller('ModalInstanceCtrl', function($scope, $modalInstance, items, Cards) {
+        app.controller('ModalInstanceCtrl', function($scope, $modalInstance, card_display, Cards) {
             $scope.card_display.shaps = Cards;
-            $scope.items = items;
+            $scope.card_display = card_display;
             $scope.selected = {
-                item: $scope.items[0]
+                card_display: $scope.card_display[0]
             };
             $scope.ok = function() {
-                $modalInstance.close($scope.selected.item);
+                $modalInstance.close($scope.selected.card_display);
             };
             $scope.cancel = function() {
                 $modalInstance.dismiss('cancel');
