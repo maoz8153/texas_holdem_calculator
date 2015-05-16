@@ -6,7 +6,7 @@ app.factory('Cards', function () {
     var shap  = ['h', 'd', 'c', 's'];
     for (var i = 0; i < shap.length; i++) {
         for (var ii = 0; ii < names.length; ii++) {
-            card.names = names[ii];
+            card.value = names[ii];
             card.shap = shap[i];
             card.imgLink = '_' + names[ii] + shap[i] +  '.png' ;
             card_by_shape.push(card);

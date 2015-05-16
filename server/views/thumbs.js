@@ -61,7 +61,7 @@ app.controller('ModalDemoCtrl', function($scope, $modal, $log, Cards) {
             size: size,
             resolve: {
                 card_display: function() {
-                    return $scope.card;
+                    return card;
                 }
             }
         });
@@ -79,12 +79,16 @@ app.controller('ModalDemoCtrl', function($scope, $modal, $log, Cards) {
 // It is not the same as the $modal service used above.
 app.controller('ModalInstanceCtrl', function($scope, $modalInstance, card_display, Cards) {
     $scope.card_display.shaps = Cards;
+    var path = "cards/";
     //$scope.card_display = card_display;
     $scope.selected = {
         selectedCard: $scope.card_display[0]
     };
     $scope.ok = function(selectedCard) {
-        $scope.card = selectedCard;
+        card_display.imgLink = path + selectedCard.imgLink;
+        card_display.value = selectedCard.value;
+        card_display.shap = selectedCard.shap;
+        //$scope.card = selectedCard;
         $modalInstance.close();
     };
     $scope.cancel = function() {
