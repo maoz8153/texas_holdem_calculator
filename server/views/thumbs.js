@@ -14,28 +14,32 @@ app.controller('MainCtrl', function($scope, Cards) {
                 ],
                 numberOfBoardCards: 3
             };
-            var cardDefault = {
-                value: 0,
-                shap: '',
-                imgLink: '_include/img/work/thumbs/image-02.jpg'
-            };
-
 
             $scope.playerCards = [];
             $scope.selected = '';
             $scope.boardCards = [];
             $scope.selected_form = false;
             $scope.select_cards = false;
-            $scope.playerCards.push(cardDefault);
-            $scope.playerCards.push(cardDefault);
             $scope.updateFormSetting = function(numberOfCards, numberOfPlayer) {
                 $scope.selectedNumberOfPlayers = numberOfPlayer;
                 $scope.selectedNumberOfCards = numberOfCards;
                 $scope.selected_form = true;
                 $scope.select_cards = true;
                 for (var i = 0; i < numberOfCards; i++) {
-                    $scope.boardCards.push(cardDefault);
-                }
+                    $scope.boardCards.push({
+                        value: 0,
+                        shap: '',
+                        imgLink: '_include/img/work/thumbs/image-02.jpg'
+                    });
+                };
+                for (var i = 0; i < 2; i++) {
+                    $scope.playerCards.push({
+                        value: 0,
+                        shap: '',
+                        imgLink: '_include/img/work/thumbs/image-02.jpg'
+                    });
+                };
+
             };
 
         })
@@ -50,7 +54,9 @@ app.controller('ModalDemoCtrl', function($scope, $modal, $log, Cards) {
     $scope.animationsEnabled = true;
     $scope.selectedNumberOfPlayers = '';
     $scope.selectedNumberOfCards = '';
-    $scope.open = function(size, card) {
+    $scope.open = function(size, card, parent, index) {
+        $scope.parent = parent;
+        $scope.index = index;
         $scope.selectedCard = card;
         var modalInstance = $modal.open({
             animation: $scope.animationsEnabled,
@@ -61,7 +67,7 @@ app.controller('ModalDemoCtrl', function($scope, $modal, $log, Cards) {
             size: size,
             resolve: {
                 card_display: function() {
-                    return card;
+                    return parent[index] = card;
                 }
             }
         });

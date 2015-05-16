@@ -6,16 +6,16 @@
             <div class="row">
                 <section id="projects">
                     <ul id="thumbs">
-                        <div ng-repeat="card in playerCards track by $index" >
+                        <div ng-repeat="card_player in playerCards track by $index" >
                             <!-- Item Project and Filter Name -->
                             <li class="item-thumbs span2 design">
                                 <!-- Fancybox - card Enabled - Title - Full Image -->
-                                <a ng-click="open('lg',playerCards[$index])" class="hover-wrap" >
+                                <a ng-click="open('lg',playerCards[$index], playerCards,$index )" class="hover-wrap" >
                                     <span class="overlay-img"></span>
                                     <span class="overlay-img-thumb font-icon-plus"></span>
                                 </a>
                                 <!-- Thumb Image and Description -->
-                                <img  ng-src="{{card.imgLink}}">
+                                <img  ng-src="{{card_player.imgLink}}">
                             </li>
                         </div>
                     </ul>
@@ -31,16 +31,16 @@
             <div class="row">
                 <section id="projects">
                     <ul id="thumbs">
-                        <div ng-repeat="card in boardCards track by $index">
+                        <div ng-repeat="card_board in boardCards track by $index">
                             <!-- Item Project and Filter Name -->
                             <li class="item-thumbs span2 design">
                                 <!-- Fancybox - card Enabled - Title - Full Image -->
-                                <a  ng-click="open('lg',boardCards[$index])" class="hover-wrap" >
+                                <a  ng-click="open('lg',boardCards[$index], boardCards, $index)" class="hover-wrap" >
                                     <span class="overlay-img"></span>
                                     <span class="overlay-img-thumb font-icon-plus"></span>
                                 </a>
                                 <!-- Thumb Image and Description -->
-                                <img  ng-src="{{boardCards[$index].imgLink}}">
+                                <img  ng-src="{{card_board.imgLink}}">
                             </li>
                         </div>
 
