@@ -15,7 +15,7 @@
                                     <span class="overlay-img-thumb font-icon-plus"></span>
                                 </a>
                                 <!-- Thumb Image and Description -->
-                                <img  ng-src="{{card_player.imgLink}}">
+                                <img  ng-src="{{card_player.imgLink}}" data-value="{{card_player.value}}" data-shap="card_player.shap">
                             </li>
                         </div>
                     </ul>
@@ -40,14 +40,14 @@
                                     <span class="overlay-img-thumb font-icon-plus"></span>
                                 </a>
                                 <!-- Thumb Image and Description -->
-                                <img  ng-src="{{card_board.imgLink}}">
+                                <img  ng-src="{{card_board.imgLink}}" data-value="{{card_board.value}}" data-shap="card_board.shap">
                             </li>
                         </div>
 
                     </ul>
                 </section>
             </div>
-
+            <button type="submit" class="btn btn-primary btn-large" ng-if="checkInputValid()" ng-click="submit()">Submit</button>
         </div>
 
 

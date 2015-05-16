@@ -20,6 +20,21 @@ app.controller('MainCtrl', function($scope, Cards) {
             $scope.boardCards = [];
             $scope.selected_form = false;
             $scope.select_cards = false;
+            $scope.checkInputValid = function(){
+                for (var i = 0; i < $scope.boardCards.length; i++) {
+                    if($scope.boardCards[i].value == "" || $scope.boardCards[i].shap == ""){
+                        return false;
+                    }
+                for (var i = 0; i < $scope.playerCards.length; i++) {
+                    if( $scope.playerCards[i].value == "" || $scope.playerCards[i].shap == "")
+                        return false;
+                };
+                return true;
+                };
+            }
+            $scope.submit = function(){
+            };
+
             $scope.updateFormSetting = function(numberOfCards, numberOfPlayer) {
                 $scope.selectedNumberOfPlayers = numberOfPlayer;
                 $scope.selectedNumberOfCards = numberOfCards;
