@@ -5,7 +5,7 @@
                 <div ng-repeat="cards_by_shap in card_display.shaps">
                     <div class="row">
                         <div ng-repeat="card in cards_by_shap track by $index">
-                            <a ng-click="ok(card)">
+                            <a ng-click="ok(cards_by_shap[$index])">
                                 <div class="span" style="margin-left: auto !important;">
                                     <img ng-src="cards/{{card.imgLink}}" style="width: 60px;">
                                 </div>
